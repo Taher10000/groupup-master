@@ -14,12 +14,13 @@ const SignUp = () => {
         setData({...data, [input.name]:input.value});
 
     }; 
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         try{
-            const url = "http://localhost:8080/api/users";
+            const url = "http://localhost:8000/api/users";
             const {data:res} = await axios.post(url, data)
-            navigate('/login')
+            navigate('/groups')
         }
         catch(error){
             if(error.response && error.response.status >=400 &&

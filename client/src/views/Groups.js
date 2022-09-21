@@ -29,7 +29,7 @@ export const AllGroups = (props) => {
         </h1>
         <div className="navbar-nav justify-content-between">
           <Link
-            to="/groups/login"
+            to="/login"
             className="btn btn-sm btn-outline-primary mx-1"
           >
             Login/Register
