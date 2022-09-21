@@ -10,6 +10,8 @@ export const NewGroup = (props) => {
   const [groupDate, setGroupDate] = useState("");
   const [groupType, setGroupType] = useState("");
   const [location, setLocation] = useState("");
+  const[locLink, setLocLink] = useState("");
+  const [src, setSrc] = useState("");
   const [desc, setDesc] = useState("");
   const [creator, setCreator] = useState("");
   const [price, setPrice] = useState("");
@@ -23,9 +25,11 @@ export const NewGroup = (props) => {
       groupDate,
       groupType,
       location,
+      locLink,
+      src,
       desc,
       creator,
-      price
+      price,
     };
 
     createGroup(newGroup)
@@ -41,8 +45,10 @@ export const NewGroup = (props) => {
 
   return (
     <div className="mx-auto">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top justify-content-center mb-4">
-        <h1 className="navbar-brand mb-0"><h1>GroupUp⬆️</h1></h1>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
+        <h1 className="navbar-brand mb-0">
+          <h1>GroupUp⬆️</h1>
+        </h1>
         <div className="navbar-nav justify-content-between">
           <Link to="/groups" className="btn btn-sm btn-outline-primary mx-1">
             Home
@@ -54,7 +60,10 @@ export const NewGroup = (props) => {
           <div className="form-group">
             <label className="h6">Group Name: </label>
             {errors?.groupName && (
-              <span style={{ color: "red" }}> {errors?.groupName?.message}</span>
+              <span style={{ color: "red" }}>
+                {" "}
+                {errors?.groupName?.message}
+              </span>
             )}
             <input
               onChange={(event) => {
@@ -67,7 +76,10 @@ export const NewGroup = (props) => {
           <div className="form-group">
             <label className="h6">Date: </label>
             {errors?.groupDate && (
-              <span style={{ color: "red" }}> {errors?.groupDate?.message}</span>
+              <span style={{ color: "red" }}>
+                {" "}
+                {errors?.groupDate?.message}
+              </span>
             )}
             <input
               onChange={(event) => {
@@ -80,7 +92,10 @@ export const NewGroup = (props) => {
           <div className="form-group">
             <label className="h6">Group Type: </label>
             {errors?.groupType && (
-              <span style={{ color: "red" }}> {errors?.groupType?.message}</span>
+              <span style={{ color: "red" }}>
+                {" "}
+                {errors?.groupType?.message}
+              </span>
             )}
             <input
               onChange={(event) => {
@@ -98,6 +113,26 @@ export const NewGroup = (props) => {
             <input
               onChange={(event) => {
                 setLocation(event.target.value);
+              }}
+              type="text"
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label className="h6">Google Maps Embed (optional)</label>
+            <input
+              onChange={(event) => {
+                setLocLink(event.target.value);
+              }}
+              type="text"
+              className="form-control"
+            />
+          </div>
+          <div className="form-group">
+            <label className="h6">Media URL (optional)</label>
+            <input
+              onChange={(event) => {
+                setSrc(event.target.value);
               }}
               type="text"
               className="form-control"

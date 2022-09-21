@@ -21,10 +21,18 @@ const GroupSchema = new mongoose.Schema(
       required: [true, "{PATH} is required."],
       minlength: [2, "{PATH} must be at least {MINLENGTH} characters."],
     },
+    locLink: {
+      type: String,
+      required: [false],
+    },
     desc: {
       type: String,
       required: [true, "{PATH} is required."],
       minlength: [3, "{PATH} must be at least {MINLENGTH} characters."],
+    },
+    src: {
+      type: String,
+      required: [false],
     },
     creator: {
       type: String,
