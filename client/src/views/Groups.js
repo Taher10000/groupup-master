@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import { getAllGroups } from "../services/internalApiService";
 
+// used to format date 
+const moment = require("moment");
+
 export const AllGroups = (props) => {
   const [groups, setGroups] = useState([]);
 
@@ -23,10 +26,6 @@ export const AllGroups = (props) => {
     localStorage.removeItem("token");
     window.location.reload();
   };
-
-  // edit img to either go into center of card
-  // or
-  // center the entire card and make width 50
 
   return (
     <div className="mx-auto">
@@ -81,7 +80,7 @@ export const AllGroups = (props) => {
                 <Link to={`/groups/${_id}`}>
                   <h4>{groupName}</h4>
                 </Link>
-                <p>Date: {groupDate}</p>
+                <p>Date: {moment(groupDate).format("MMMM Do, YYYY")}</p>
                 <p>Description: {desc}</p>
                 <p>Location: {location}</p>
                 {price && <p>Price: ${price}</p>}

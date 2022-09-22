@@ -3,6 +3,9 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 
 import { deleteGroupById, getGroupById } from "../services/internalApiService";
 
+//used to format date
+const moment = require("moment");
+
 export const ViewGroup = (props) => {
   const [group, setGroup] = useState(null);
   const { id } = useParams();
@@ -48,6 +51,7 @@ export const ViewGroup = (props) => {
       </nav>
       <h1>{groupName}</h1>
       <div className="mx-auto shadow mb-4 rounded border p-2">  
+
       {/* img */}
       {src && (
         <img src={src} alt={groupName} className="shadow rounded mb-4" width="100%" height="600" />
@@ -66,11 +70,10 @@ export const ViewGroup = (props) => {
         ></iframe>
       )}
         <h4 className="mb-3">Location: {location}</h4>
-        <h4 className="mb-3">Date: {groupDate}</h4>
+        <h4 className="mb-3">Date: {moment(groupDate).format("MMMM Do, YYYY")}</h4>
         <h4 className="mb-3">Group Type: {groupType}</h4>
         <h4 className="mb-3">Description: {desc}</h4>
         {price && <h4 className="mb-3">Price: ${price}</h4>}
-        <h4 className="mb-3">Posted By: {creator}</h4>
       </div>
       <button onClick={(e) => {
           handleDeleteClick();

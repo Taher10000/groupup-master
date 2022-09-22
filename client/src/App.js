@@ -8,19 +8,19 @@ import { EditGroup } from "./views/EditGroup";
 import { NewGroup } from "./views/NewGroup";
 import  SignUp  from "./views/SignUp";
 import  Login  from "./views/Login";
-import Logout  from "./views/Logout";
+// import Logout  from "./views/Logout";
 
 
 
 // import Chat from "./components/Chat"
 
 function App() {
-  const user = localStorage.getItem("token");
+  // const user = localStorage.getItem("token");
   return (
     <div className="container">
       <Routes>
         {/* { User } */}
-        {user &&<Route path = "/" exact element = {<Logout/>} />}
+        {/* {user &&<Route path = "/" exact element = {<Logout/>} />} */}
         <Route path = "/signup" exact element = {<SignUp/>} />
         <Route path = "/login" exact element = {<Login/>} />
         {/* Groups */}
