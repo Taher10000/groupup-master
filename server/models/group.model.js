@@ -43,6 +43,11 @@ const GroupSchema = new mongoose.Schema(
       type: Number,
       required: [false],
     },
+    // createrToken: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: 'User'
+    // }
   },
   { timestamps: true }
 );

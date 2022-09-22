@@ -28,7 +28,7 @@ export const AllGroups = (props) => {
   };
 
   return (
-    <div className="mx-auto">
+    <div className="">
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center mb-4">
         <h1 className="navbar-brand mb-0">
           <h1>GroupUp⬆️</h1>
@@ -69,35 +69,15 @@ export const AllGroups = (props) => {
             location,
             creator,
             price,
+            creatorToken,
           } = group;
 
           return (
             <div
               key={_id}
-              className="shadow mb-4 rounded border p-4 d-flex w-50"
+              className="shadow mb-4 rounded border"
             >
-              <div>
-                <Link to={`/groups/${_id}`}>
-                  <h4>{groupName}</h4>
-                </Link>
-                <p>Date: {moment(groupDate).format("MMMM Do, YYYY")}</p>
-                <p>Description: {desc}</p>
-                <p>Location: {location}</p>
-                {price && <p>Price: ${price}</p>}
-                <p>Posted by: {creator}</p>
-
-                <div className="mt-2 d-flex">
-                  { user &&
-                    <Link
-                      to={`/groups/${_id}/edit`}
-                      className="btn btn-sm btn-outline-warning mx-1"
-                    >
-                      Edit
-                    </Link>
-                  }
-                </div>
-              </div>
-              <div className="mx-2">
+              <div className="">
                 {src && (
                   <img
                     src={src}
@@ -107,6 +87,34 @@ export const AllGroups = (props) => {
                     height="250"
                   />
                 )}
+              </div>
+              <div className="p-4 text-center">
+                <Link to={`/groups/${_id}`}>
+                  <h2>{groupName}</h2>
+                </Link>
+                <h3>Date: {moment(groupDate).format("MMMM Do, YYYY")}</h3>
+                <h3>Description: {desc}</h3>
+                <h3>Location: {location}</h3>
+                {price && <h3>Price: ${price}</h3>}
+                <h3>Posted by: {creator}</h3>
+                <h3>Token: {creatorToken}</h3>
+
+                <div className="">
+                  <Link
+                      to={`/groups/${_id}`}
+                      className="btn btn-outline-primary mx-1"
+                    >
+                      View
+                  </Link>
+                  { user &&
+                    <Link
+                      to={`/groups/${_id}/edit`}
+                      className="btn btn-outline-warning mx-1"
+                    >
+                      Edit
+                    </Link>
+                  }
+                </div>
               </div>
             </div>
           );
