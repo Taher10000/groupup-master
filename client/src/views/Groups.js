@@ -22,8 +22,8 @@ export const AllGroups = (props) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
-    }
-  
+  };
+
   // edit img to either go into center of card
   // or
   // center the entire card and make width 50
@@ -35,31 +35,48 @@ export const AllGroups = (props) => {
           <h1>GroupUp⬆️</h1>
         </h1>
         <div className="navbar-nav justify-content-between">
-          <Link
-            to="/login"
-            className="btn btn-sm btn-outline-primary mx-1"
-          >
-            Login/Register
-          </Link>
-          <Link
-            to="/groups/new"
-            className="btn btn-sm btn-outline-success mx-1"
-          >
-            Create a group
-          </Link>
-          <button onClick={handleLogout}>
-            Logout
-        </button>
+          {!user && (
+            <Link to="/login" className="btn btn-sm btn-outline-primary mx-1">
+              Login/Register
+            </Link>
+          )}
+          {user && (
+            <Link
+              to="/groups/new"
+              className="btn btn-sm btn-outline-success mx-1"
+            >
+              Create a group
+            </Link>
+          )}
+          {user && (
+            <button
+              className="btn btn-sm btn-outline-danger mx-1"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
         </div>
       </nav>
       <h2 className="text-center mb-4">Active Groups:</h2>
       <div className="">
         {groups.map((group) => {
-          const { _id, groupName, groupDate, desc, src, location, creator, price } =
-            group;
+          const {
+            _id,
+            groupName,
+            groupDate,
+            desc,
+            src,
+            location,
+            creator,
+            price,
+          } = group;
 
           return (
-            <div key={_id} className="shadow mb-4 rounded border p-4 d-flex w-50">
+            <div
+              key={_id}
+              className="shadow mb-4 rounded border p-4 d-flex w-50"
+            >
               <div>
                 <Link to={`/groups/${_id}`}>
                   <h4>{groupName}</h4>
@@ -71,12 +88,14 @@ export const AllGroups = (props) => {
                 <p>Posted by: {creator}</p>
 
                 <div className="mt-2 d-flex">
-                  <Link
-                    to={`/groups/${_id}/edit`}
-                    className="btn btn-sm btn-outline-warning mx-1"
-                  >
-                    Edit
-                  </Link>
+                  { user &&
+                    <Link
+                      to={`/groups/${_id}/edit`}
+                      className="btn btn-sm btn-outline-warning mx-1"
+                    >
+                      Edit
+                    </Link>
+                  }
                 </div>
               </div>
               <div className="mx-2">

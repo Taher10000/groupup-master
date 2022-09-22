@@ -22,7 +22,7 @@ authRouter.post("/", async (req, res)=>{
             return res.status(401).send({message: "Invalid email or password"})
         }
         const token = user.generateAuthToken();
-        res.status(200).send({data: token, message:"Logged in successfully"})
+        res.status(200).send({token: token, message:"Logged in successfully"})
 
     }
     catch(error) {
