@@ -6,6 +6,19 @@ const getUserByEmail = async (email) => {
   return user;
 };
 
+// const loginUser = async (data) => {
+//     console.log("service: loginUser");
+//     const { error } = validate(data);
+//     if (error) {
+//         throw error;
+//     }
+//     const existingUser = await getUserByEmail(data.email);
+
+//   if (!existingUser) {
+//     throw new Error("Email taken.");
+//   }
+// }
+
 const createUser = async (data) => {
   console.log("service: createUser");
   const { error } = validate(data);

@@ -6,6 +6,9 @@ import { getAllGroups } from "../services/internalApiService";
 export const AllGroups = (props) => {
   const [groups, setGroups] = useState([]);
 
+  const user = localStorage.getItem("token");
+  console.log(user);
+
   useEffect(() => {
     getAllGroups()
       .then((data) => {
