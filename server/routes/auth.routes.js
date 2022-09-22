@@ -1,35 +1,32 @@
 const express = require("express");
 const {User} = require('../models/user.model');
 const bcrypt = require("bcrypt");
+const Joi = require("joi");
 
 const authRouter = express.Router();
 authRouter.post("/", async (req, res)=>{
     try {
         const {error} = validate(req.body);
         if(error){
-            return res.status(400).send({message: error.details[0].message});
+            return res.status(400).send({message: "this error" + error.details[0].message});
         }
         const user = await User.findOne({email:req.body.email});
         if(!user){
             return res.status(401).send({message: "Invalid email or password"})
         }
         const validPassword = await bcrypt.compare(
-            req.body.password, user.password
+            req.body.password,
+            user.password
         );
-        const token = user.generateAuthToken();
-        res.status(200).send({data: token, message:"Logged in successfully"})
         if(!validPassword){
             return res.status(401).send({message: "Invalid email or password"})
         }
-        const salt = await bcrypt.genSalt(Number(process.env.SALT)); 
-        const hashPassword = await bcrypt.hash(req.body.password, salt);
-        
-        await new User({...req.body, password: hashPassword}).save();
-        res.status(201).send({message:"User created successfully"})
+        const token = user.generateAuthToken();
+        res.status(200).send({data: token, message:"Logged in successfully"})
 
     }
     catch(error) {
-        res.status(500).send({message: error})
+        res.status(500).send({message: error.message})
 
     }
 })

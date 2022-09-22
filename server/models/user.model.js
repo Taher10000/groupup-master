@@ -29,12 +29,12 @@ const userSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+
 userSchema.methods.generateAuthToken = function () {
     const token = jwt.sign({ _id: this._id }, process.env.JWTPrivatekey, { expiresIn: "7d" })
     return token;   // in .env file add  JWTPrivatekey = your private key.
 }
-module.exports = { User: User };
+const User = mongoose.model("User", userSchema);
 
 const validate = (data) => {
     const schema = Joi.object({

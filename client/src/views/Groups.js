@@ -19,6 +19,10 @@ export const AllGroups = (props) => {
         console.log(error);
       });
   }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+    }
   
   // edit img to either go into center of card
   // or
@@ -43,6 +47,9 @@ export const AllGroups = (props) => {
           >
             Create a group
           </Link>
+          <button onClick={handleLogout}>
+            Logout
+        </button>
         </div>
       </nav>
       <h2 className="text-center mb-4">Active Groups:</h2>
