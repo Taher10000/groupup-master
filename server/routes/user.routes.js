@@ -11,6 +11,7 @@ const {
 } = require("../controllers/user.controller");
 
 const router = express.Router();
+// const { protect } = require('../middleware/auth')
 
 router.post("/", handleCreateUser);
 router.get("/:id", handleGetUserById);
