@@ -10,7 +10,7 @@ const {
 
 const router = express.Router();
 
-router.post("/", handleCreateGroup);
+router.post("/:creatorId", handleCreateGroup);
 router.get("/:id", handleGetGroupById);
 router.get("/", handleGetAllGroups);
 router.delete("/:id", handleDeleteGroupById);

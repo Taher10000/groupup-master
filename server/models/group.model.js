@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { userRouter } = require("../routes/user.routes");
 
 const GroupSchema = new mongoose.Schema(
   {
@@ -42,6 +43,7 @@ const GroupSchema = new mongoose.Schema(
     price: {
       type: Number,
       required: [false],
+<<<<<<< HEAD
     },
     // createrToken: {
     //   type: mongoose.Schema.Types.ObjectId,
@@ -49,8 +51,19 @@ const GroupSchema = new mongoose.Schema(
     //   ref: 'User'
     // }
   },
+=======
+    }, 
+    creatorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: [true],
+      ref: "User"
+      //embeded document //when i do get i need to understand how to get user thru id //logged in user id.
+    }
+  },   
+>>>>>>> dad6fe105d97a262b1fa1d5cb80ad43a73b40af7
   { timestamps: true }
 );
+// 
 
 const Group = mongoose.model("Group", GroupSchema);
 

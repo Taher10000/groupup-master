@@ -1,9 +1,9 @@
 const { Group } = require("../models/group.model");
 
-const createGroup = async (data) => {
+const createGroup = async (data, creatorId) => {  //also pass in creatorId, might be better createGroup({...req.body, creatorId: req.params.creatorId})
   console.log("service: createGroup");
-
-  const group = await Group.create(data);
+  data.creatorId = creatorId;
+  const group = await Group.create(data);  //data need to include creatorId createGroup({...req.body, creatorId: req.params.creatorId})
   return group;
 };
 

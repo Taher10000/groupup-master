@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -69,7 +71,11 @@ export const AllGroups = (props) => {
             location,
             creator,
             price,
+<<<<<<< HEAD
             creatorToken,
+=======
+            creatorId
+>>>>>>> dad6fe105d97a262b1fa1d5cb80ad43a73b40af7
           } = group;
 
           return (
@@ -77,7 +83,32 @@ export const AllGroups = (props) => {
               key={_id}
               className="shadow mb-4 rounded border"
             >
+<<<<<<< HEAD
               <div className="">
+=======
+              <div>
+                <Link to={`/groups/${_id}`}>
+                  <h4>{groupName}</h4>
+                </Link>
+                <p>Date: {groupDate}</p>
+                <p>Description: {desc}</p>
+                <p>Location: {location}</p>
+                {price && <p>Price: ${price}</p>}
+                <p>Posted by: {creator}</p>
+
+                <div className="mt-2 d-flex">
+                  { user && creatorId === user._id && 
+                    <Link
+                      to={`/groups/${_id}/edit`}
+                      className="btn btn-sm btn-outline-warning mx-1"
+                    >
+                      Edit
+                    </Link>
+                  }
+                </div>
+              </div>
+              <div className="mx-2">
+>>>>>>> dad6fe105d97a262b1fa1d5cb80ad43a73b40af7
                 {src && (
                   <img
                     src={src}

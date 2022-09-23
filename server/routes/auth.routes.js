@@ -23,6 +23,7 @@ authRouter.post("/", async (req, res)=>{
         }
         const token = user.generateAuthToken();
         res.status(200).send({token: token, message:"Logged in successfully"})
+        console.log(token);
 
     }
     catch(error) {

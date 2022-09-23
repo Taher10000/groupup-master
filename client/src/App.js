@@ -30,6 +30,7 @@ function App() {
         <Route path="/groups/:id" element={<ViewGroup />} />
         <Route path="/groups/new" element={<NewGroup />} />
       </Routes>
+      
     </div>
   );
 }
