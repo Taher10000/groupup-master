@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -22,11 +24,7 @@ export const AllGroups = (props) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
-<<<<<<< HEAD
-  }
-=======
   };
->>>>>>> f005aa8d9ee83bcd33cf7f06a25350e4b0c9fa37
 
   // edit img to either go into center of card
   // or
@@ -39,35 +37,19 @@ export const AllGroups = (props) => {
           <h1>GroupUp⬆️</h1>
         </h1>
         <div className="navbar-nav justify-content-between">
-<<<<<<< HEAD
-          {!user &&
-            <Link
-              to="/login"
-              className="btn btn-sm btn-outline-primary mx-1"
-            >
-              Login/Register
-            </Link>
-          }
-          {user &&
-=======
           {!user && (
             <Link to="/login" className="btn btn-sm btn-outline-primary mx-1">
               Login/Register
             </Link>
           )}
           {user && (
->>>>>>> f005aa8d9ee83bcd33cf7f06a25350e4b0c9fa37
             <Link
               to="/groups/new"
               className="btn btn-sm btn-outline-success mx-1"
             >
               Create a group
             </Link>
-<<<<<<< HEAD
-          }
-=======
           )}
->>>>>>> f005aa8d9ee83bcd33cf7f06a25350e4b0c9fa37
           {user && (
             <button
               className="btn btn-sm btn-outline-danger mx-1"
@@ -90,6 +72,7 @@ export const AllGroups = (props) => {
             location,
             creator,
             price,
+            creatorId
           } = group;
 
           return (
@@ -108,7 +91,7 @@ export const AllGroups = (props) => {
                 <p>Posted by: {creator}</p>
 
                 <div className="mt-2 d-flex">
-                  { user &&
+                  { user && creatorId === user._id && 
                     <Link
                       to={`/groups/${_id}/edit`}
                       className="btn btn-sm btn-outline-warning mx-1"

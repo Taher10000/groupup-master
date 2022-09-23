@@ -174,6 +174,7 @@ export const NewGroup = (props) => {
               className="form-control"
             />
           </div>
+          
           <Link to="/groups" className="btn btn-outline-danger m-1">
             Cancel
           </Link>

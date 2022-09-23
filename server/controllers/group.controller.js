@@ -8,9 +8,10 @@ const {
 
 const handleCreateGroup = async (req, res) => {
   console.log("controller: handleCreateGroup req.body:", req.body);
+  
 
   try {
-    const group = await createGroup(req.body);
+    const group = await createGroup(req.body, req.params.creatorId); // req.params.creatorId.
     return res.json(group);
   } catch (error) {
     return res.status(400).json(error);
